@@ -1,0 +1,174 @@
+{  
+  "errInfo": "none",  
+  "rescode": "200",  
+  "detail": {
+       "list": [{  
+          "workerInfo": {  
+             "name": "王医生",  
+             "id": "D001",
+             "department": "呼吸内科",
+             "title": "主任医师、副教授",
+             "headpic": "www.baidu.com"
+          },
+          "queueInfo": {
+             "listNum": 12,
+             "department": "呼吸内科"
+          },
+          "listInfo": {
+             "seeing": {
+                "name": "李四",
+                "id": "002",
+                "show": 0
+             },
+             "watingList": [{
+                "name": "张三",
+                "id": "004" 
+             },{
+                "name": "赵同伟",
+                "id": "005" 
+             },{
+                "name": "赵同伟",
+                "id": "005" 
+             },{
+                "name": "赵同伟",
+                "id": "005" 
+             }]
+          }
+       },{  
+          "workerInfo": {  
+             "name": "王医生",  
+             "id": "D001",
+             "department": "呼吸内科",
+             "title": "主任医师、副教授",
+             "headpic": "www.baidu.com"
+          },
+          "queueInfo": {
+             "listNum": 12,
+             "department": "呼吸内科"
+          },
+          "listInfo": {
+             "seeing": {
+                "name": "齐同伟",
+                "id": "004",
+                "show": 0
+             },
+             "watingList": [{
+                "name": "张同伟",
+                "id": "004" 
+             },{
+                "name": "赵同伟",
+                "id": "005" 
+             }]
+          }
+       },{  
+          "workerInfo": {  
+             "name": "王医生",  
+             "id": "D001",
+             "department": "呼吸内科",
+             "title": "主任医师、副教授",
+             "headpic": "www.baidu.com"
+          },
+          "queueInfo": {
+             "listNum": 12,
+             "department": "呼吸内科" 
+          },
+          "listInfo": {
+             "seeing": {
+                "name": "齐同伟",
+                "id": "003" 
+             },
+             "watingList": [{
+                "name": "张同伟",
+                "id": "004" 
+             },{
+                "name": "赵同伟",
+                "id": "005" 
+             }]
+          }
+       },{  
+          "workerInfo": {  
+             "name": "王医生",  
+             "id": "D001",
+             "department": "呼吸内科",
+             "title": "主任医师、副教授",
+             "headpic": "www.baidu.com"
+          },
+          "queueInfo": {
+             "listNum": 12,
+             "department": "呼吸内科"
+          },
+          "listInfo": {
+             "seeing": {
+                "name": "齐同伟",
+                "id": "003",
+                "show": 0
+             },
+             "watingList": [{
+                "name": "张同伟",
+                "id": "004" 
+             },{
+                "name": "赵同伟",
+                "id": "005" 
+             }]
+          }
+       },{  
+          "workerInfo": {  
+             "name": "王医生",  
+             "id": "D001",
+             "department": "呼吸内科",
+             "title": "主任医师、副教授",
+             "headpic": "www.baidu.com"
+          },
+          "queueInfo": {
+             "listNum": 12,
+             "department": "呼吸内科"
+          },
+          "listInfo": {
+             "seeing": {
+                "name": "张先生",
+                "id": "003",
+                "show": 0
+             },
+             "watingList": [{
+                "name": "张同伟",
+                "id": "004" 
+             },{
+                "name": "赵同伟",
+                "id": "005" 
+             }]
+          }
+       },{  
+          "workerInfo": {  
+             "name": "王医生",  
+             "id": "D001",
+             "department": "呼吸内科",
+             "title": "主任医师、副教授",
+             "headpic": "www.baidu.com"
+          },
+          "queueInfo": {
+             "listNum": 12,
+             "department": "呼吸内科",
+             "show": 0   
+          },
+          "listInfo": {
+             "seeing": {
+                "name": "齐同伟",
+                "id": "003" 
+             },
+             "watingList": [{
+                "name": "张同伟",
+                "id": "004" 
+             },{
+                "name": "赵同伟",
+                "id": "005" 
+             },{
+                "name": "赵同伟",
+                "id": "005" 
+             },{
+                "name": "赵同伟",
+                "id": "005" 
+             }]
+          }
+       }]
+  }  
+}

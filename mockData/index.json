@@ -1,0 +1,40 @@
+{  
+  "errInfo": "none",  
+  "rescode": "200",  
+  "detail": {
+       "list": [{  
+          "workerInfo": {  
+             "name": "王医生",  
+             "id": "D001",
+             "department": "呼吸内科",
+             "title": "主任医师、副教授",
+             "headpic": "./mockData/headImg.jpg"
+          },
+          "queueInfo": {
+             "listNum": 12,
+             "department": "呼吸内科",
+             "pos": "诊室2"
+          },
+          "listInfo": {
+             "seeing": {
+                "name": "齐同伟",
+                "id": "003",
+                "show": 0
+             },
+             "watingList": [{
+                "name": "张同伟",
+                "id": "004" 
+             },{
+                "name": "赵同伟",
+                "id": "005" 
+             },{
+                "name": "张同伟",
+                "id": "004" 
+             },{
+                "name": "赵同伟",
+                "id": "005" 
+             }]
+          }
+       }]
+  }  
+}
