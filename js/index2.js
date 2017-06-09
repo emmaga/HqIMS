@@ -35,7 +35,13 @@ $(document).ready(function(){
 
     // Note:url参数必须这样写      ?stationID=2
      $.get('config.json').done(function(response){
-             var serverUrl = JSON.parse(response).serverUrl;
+             var type  = typeof response;
+             var serverUrl;
+             if (type == 'string') {
+                 serverUrl = JSON.parse(response).serverUrl;
+             } else {
+                 serverUrl = response.serverUrl;
+             }
              setInterval(function(){
                      $.ajax({
                          url: serverUrl,
