@@ -99,6 +99,11 @@ $(document).ready(function(){
         for (var i = 0; i < len; i++) {
             html += '<div class="wait"><span class="name">' + listInfo.waiting[i].name + '</span><span class="id">' +
                    listInfo.waiting[i].id + '</span></div>'
+        };
+        if (len < 3) {
+           for (var i = 0; i < (3-len); i++) {
+                html += '<div class="wait"><span class="name"></span><span class="id"></span></div>'
+            } 
         }
         watingListInfo.html(html)
     }
