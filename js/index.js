@@ -100,11 +100,12 @@ $(document).ready(function(){
 
     // 弹出框内容
     function showModal() {
+        console.log(workerInfo)
         console.log('modal', listInfo.seeing)
         if (listInfo.seeing.show == 1) {
             modal.css('display', 'block');
             modalFooter.text(workerInfo.department);
-            departmentFooter.text(workerInfo.department);
+            departmentFooter.text(queueInfo.pos);
             seeingIdFooter.text(listInfo.seeing.id);
             seeingNameFooter.text(listInfo.seeing.name);
         } else {

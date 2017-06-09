@@ -96,7 +96,7 @@ $(document).ready(function(){
         for (var i = 0; i < list.length; i++) {
             if (list[i].listInfo.seeing.show == 1) {
                    modalFooter.text(list[i].workerInfo.department);
-                   departmentFooter.text(list[i].workerInfo.department);
+                   departmentFooter.text(list[i].queueInfo.pos);
                    seeingIdFooter.text(list[i].listInfo.seeing.id);
                    seeingNameFooter.text(list[i].listInfo.seeing.name);
                    flag = true;
