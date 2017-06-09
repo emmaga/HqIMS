@@ -7,8 +7,8 @@ $(document).ready(function(){
     var departmentFooter = $('.modal-body .department span');
     var seeingIdFooter = $('.modal-body .seeing .id');
     var seeingNameFooter = $('.modal-body .seeing .name');
-
-
+    // 翻页计数  seconds 秒  计时用； perNum每页显示数量; pagerNum一共显示几页; pagerTime 每页显示的时间，7秒; pagerQueue显示第几页
+    var seconds = 0, perNum = 5, pagerNum = 0, pagerTime = 7, pagerQueue = 0;
 
      var QueryString = function () {
        // This function is anonymous, is executed immediately and 
@@ -36,7 +36,7 @@ $(document).ready(function(){
     // Note:url参数必须这样写      ?stationID=2
      $.get('config.json').done(function(response){
              var serverUrl = JSON.parse(response).serverUrl;
-             // setInterval(function(){
+             setInterval(function(){
                      $.ajax({
                          url: serverUrl,
                          type: 'POST',
@@ -48,7 +48,13 @@ $(document).ready(function(){
                      })
                      .done(function(response) {
                          var res = response.detail;
-                         changeInfo(res)
+                         pagerNum = Math.ceil( res.list.length / perNum);
+                         seconds++; 
+                         pagerQueue = Math.ceil( seconds / pagerTime);
+                         if (pagerNum*pagerTime <(seconds +1)) {
+                            seconds = 0;
+                         }
+                         changeInfo(res, pagerQueue )
                          showModal(res)
                      })
                      .fail(function() {
@@ -57,15 +63,17 @@ $(document).ready(function(){
                      .always(function() {
                          console.log("complete");
                      });
-             // },  1000)
+             },  1000)
 
      })
     function changeInfo(res) {
-        var html = '', len = res.list.length > 5 ? 5 : res.list.length;
-        for (var i = 0; i < len; i++) {
+        var html = '';
+        var start = (pagerQueue-1)*5, end = (res.list.length > pagerQueue*5) ? pagerQueue*5 : res.list.length;
+        var len = end - start;
+        for (var i = start; i < end; i++) {
             var waitingNum = res.list[i].listInfo.waiting.length > 3 ? 3 : res.list[i].listInfo.waiting.length;
             html += '<div class="department-info">' +
-                '<div class="department info-item">' + res.list[i].queueInfo.department + '</div>' +
+                '<div class="department info-item">' + res.list[i].queueInfo.pos + '</div>' +
                 '<div class="seeing info-item">' + res.list[i].listInfo.seeing.name + '</div>' +
                 '<div class="waiting info-item">';
 

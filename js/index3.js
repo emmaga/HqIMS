@@ -35,7 +35,7 @@ $(document).ready(function(){
     // Note:url参数必须这样写      ?stationID=2&callerID0=8&callerID1=10
      $.get('config.json').done(function(response){
              var serverUrl = JSON.parse(response).serverUrl;
-             // setInterval(function(){
+             setInterval(function(){
                      $.ajax({
                          url: serverUrl,
                          type: 'POST',
@@ -57,7 +57,7 @@ $(document).ready(function(){
                      .always(function() {
                          console.log("complete");
                      });
-             // },  1000)
+             },  1000)
 
      })
 
