@@ -1,5 +1,5 @@
 html,body {
-   height: 100%;
+	height: 100%;
 }
 
 
@@ -98,7 +98,7 @@ html,body {
 	border-top: 4px solid #fff;
 }
 .content-inner .list .wating.content-block .row .row-item:last-child {
-   border-right: 0 ;
+	border-right: 0 ;
 }
 
 
@@ -111,7 +111,7 @@ html,body {
 	height: -moz-calc(100vh - 8rem - 5.5rem - 3.2rem - 6.25rem);
 	height:-webkit-calc(100vh - 8rem - 5.5rem - 3.2rem - 6.25rem);
 	height: calc(100vh - 8rem - 5.5rem - 3.2rem - 6.25rem);
-} 
+}
 .seeing.content-block .isseeing {
 	display: flex;
 	flex: 0 0 40%;
@@ -180,7 +180,7 @@ html,body {
 /* 自适应布局 */
 @media screen and (max-width: 1280px) {
 	html {
-        font-size: 12px;
+		font-size: 12px;
 	}
 }
 

@@ -6,3 +6,5 @@ http://192.168.17.207/projects/InformationDelivery/index2.html?stationID=2
 http://192.168.17.207/projects/InformationDelivery/index3.html?stationID=2&callerID0=8&callerID1=10
 4 药房
 http://192.168.17.207/projects/InformationDelivery/index4.html?stationID=2&callerID0=8
+5 单科室单医生 竖屏
+http://192.168.17.207/projects/InformationDelivery/index5.html?stationID=2&callerID0=8

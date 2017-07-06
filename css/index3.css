@@ -111,7 +111,7 @@ html {
 	justify-content: space-around;
 }
 .worker-info .top .top-info .info {
-    flex:0 0 33.33%;
+	flex:0 0 33.33%;
 }
 .worker-info .top .department,.worker-info .top .pos {
 	font-family: PingFangSC;
@@ -146,9 +146,9 @@ html {
 	color: #4B4B4B;
 	letter-spacing: -0px;
 	display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding-bottom: 1px;
+	flex-direction: column;
+	justify-content: flex-end;
+	padding-bottom: 1px;
 }
 .seeing-info.content-info {
 	display: flex;
@@ -156,10 +156,13 @@ html {
 	align-items: center;
 }
 .seeing-info .info-inner {
-    font-family: PingFangSC-Medium;
-    font-size: 5rem;
-    color: #4B4B4B;
-    text-align: center;
+	font-family: PingFangSC-Medium;
+	font-size: 5rem;
+	color: #4B4B4B;
+	text-align: center;
+}
+.seeing-id{
+	font-size: 4rem;
 }
 .watingList-info.content-info {
 	display: flex;
@@ -168,7 +171,7 @@ html {
 }
 .watingList-info .wait {
 	flex: 0 0 33%;
-	border-bottom: 2px solid #fff; 
+	border-bottom: 2px solid #fff;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -183,16 +186,16 @@ html {
 }
 
 .seeing-info .id {
-    margin-top:30px;
+	margin-top:30px;
 }
 .content-inner .content-block:nth-child(1) {
-    background-color: #F4F4F4;
+	background-color: #F4F4F4;
 }
 .content-inner .content-block:nth-child(2) {
-    background-color: #ECF0F1;
+	background-color: #ECF0F1;
 }
 .content-inner .content-block:nth-child(3) {
-    background-color: #DDE1E3;
+	background-color: #DDE1E3;
 }
 .content-inner .content-title {
 	display: flex;
@@ -231,8 +234,8 @@ html {
 }
 .modal-content {
 	display: flex;
-    height: 100vh;
-    flex-direction: column;
+	height: 100vh;
+	flex-direction: column;
 }
 .modal-body {
 	flex:1;
@@ -241,7 +244,7 @@ html {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-    font-family: PingFangSC;
+	font-family: PingFangSC;
 	color:#fff;
 }
 .modal-body .department {
@@ -267,12 +270,12 @@ html {
 	background-color: #fff;
 	font-size: 7rem;
 	font-family: PingFangSC-Semibold;
-    color: #2C9FF8;
+	color: #2C9FF8;
 }
 /* 自适应布局 */
 @media screen and (max-width: 1280px) {
 	html {
-        font-size: 12px;
+		font-size: 12px;
 	}
 }
 

@@ -1,6 +1,14 @@
 $(document).ready(function () {
     // 请求数据 更新数据-----------------------------------------------------------------
     var contentList = $('.content')
+    //医生头像
+    var docImg = $('.docImg div')
+    //医生信息
+    var docDetail = $('.docDetail')
+    //正在就诊
+    var seeingListHtml = $('.seeingList')
+    //等待就诊
+    var waitListHtml = $('.waitList')
     //  弹出框
     var modal = $('.modal')
 
@@ -65,55 +73,21 @@ $(document).ready(function () {
     })
 
 
-    // var json = 0
-    // var num = 0
-    // setInterval(function () {
-    //     var url = json == 0 ? 'mockData/index5.json' : 'mockData/index6.json'
-    //     json = json == 0 ? 1 : 0
-    //     num++
-    //     return
-    //     $.get(url).done(function (response) {
-    //         info = response.detail.list[0]
-    //         changeInfo(info)
-    //     })
-    //     console.log(num % 5)
-    //     if (num % 5 == 0) {
-    //         $(".modal").css("display", $(".modal").css("display") == "block" ? "none" : 'block')
-    //     }
-    // }, 1000)
+    var imgSrc = null;
 
     // 改变信息
     function changeInfo (info) {
         var html = "";
+
         var seeingList = "";
         var waitingList = "";
 
-        if (info.listInfo.waiting.length > 0) {
-            var tempHtml = "";
-            var length = info.listInfo.waiting.length > 1?2:1;
-            for (var i = 0; i < length; i++) {
-                tempHtml += '<div class="waiting_name">'
-                    + '<span>' + info.listInfo.waiting[i].name + '(' + info.listInfo.waiting[i].id + ')' + '</span>'
-                    + '</div>';
-            }
-            waitingList = tempHtml;
+        if (imgSrc != info.workerInfo.headpic) {
+            imgSrc = info.workerInfo.headpic;
+            docImg.html('<img class="WIDTH80" src="'+ imgSrc +'">')
         }
 
-        if(info.listInfo.seeing.name !=""){
-            seeingList = '<span>' + info.listInfo.seeing.name + '(' + info.listInfo.seeing.id + ')' + '</span>'
-        }
-
-        html = '<div class="content-inner">'
-            + '<div class="content-head">'
-            + '<div class="head-item department">' + info.queueInfo.pos + '</div>'
-            + '</div>'
-            + '<div class="doctorInfo bg-waite">'
-            + '<div class="TxtAnC WIDTH35 DISIL docImg">'
-            + '<div class=" BORDER-B PADDING-X-20 ">'
-            + '<img class="WIDTH80" src="'+ info.workerInfo.headpic +'">'
-            + '</div>'
-            + '</div><div class="DISIL WIDTH65 BORDER-B docDetail">'
-            + '<div>'
+        var docInfoHtml = '<div>'
             + '<div class="margin_b14">'
             + '<span>姓名：' + info.workerInfo.name + '</span>'
             + '</div>'
@@ -127,19 +101,73 @@ $(document).ready(function () {
             + '<span>排队人数： ' + info.queueInfo.listNum + '</span>'
             + '</div><div>'
             + '<div class="DISIL profession_title">擅长： </div><div class="DISIL profession_info">' + info.workerInfo.descText
-            + '</div> </div> </div> </div> </div>'
-            + '<div class="TxtAnC FSW_B bg-waite seeingList">'
-            + '<div class="listInfo   seeing_title">'
+            + '</div> </div> </div>'
+
+        docDetail.html(docInfoHtml)
+
+        if(info.listInfo.seeing.name !=""){
+            seeingList = '<span>' + info.listInfo.seeing.name + '(' + info.listInfo.seeing.id + ')' + '</span>'
+        }
+        seeingList = '<div class="listInfo   seeing_title">'
             + '正在就诊'
             + '</div>'
             + '<div class="seeing_name">'
             + seeingList
-            + '</div> </div>'
-            + '<div class="TxtAnC FSW_B bg-waite">'
-            + '<div class="listInfo  waiting_title ">正在排队</div>'
-            + waitingList
-            +' </div> </div>'
-        contentList.html(html)
+            + '</div>';
+        seeingListHtml.html(seeingList);
+
+        if (info.listInfo.waiting.length > 0) {
+            var tempHtml = "";
+            var length = info.listInfo.waiting.length > 1?2:1;
+            for (var i = 0; i < length; i++) {
+                tempHtml += '<div class="waiting_name">'
+                    + '<span>' + info.listInfo.waiting[i].name + '(' + info.listInfo.waiting[i].id + ')' + '</span>'
+                    + '</div>';
+            }
+            waitingList = tempHtml;
+        }
+        waitingList = '<div class="listInfo  waiting_title ">等待就诊</div>'+ waitingList
+
+        waitListHtml.html(waitingList)
+
+
+        // html = '<div class="content-inner">'
+        //     + '<div class="content-head">'
+        //     + '<div class="head-item department">' + info.queueInfo.pos + '</div>'
+        //     + '</div>'
+        //     + '<div class="doctorInfo bg-waite">'
+        //     + '<div class="TxtAnC WIDTH35 DISIL docImg">'
+        //     + '<div class=" BORDER-B PADDING-X-20 ">'
+        //     + '<img class="WIDTH80" src="'+ info.workerInfo.headpic +'">'
+        //     + '</div>'
+        //     + '</div><div class="DISIL WIDTH65 BORDER-B docDetail">'
+        //     + '<div>'
+        //     + '<div class="margin_b14">'
+        //     + '<span>姓名：' + info.workerInfo.name + '</span>'
+        //     + '</div>'
+        //     + '<div class="margin_b14">'
+        //     + '<span>' + '职称：' + info.workerInfo.title + '</span>'
+        //     + '</div>'
+        //     + '<div class="margin_b14">'
+        //     + '<span>科室： ' + info.workerInfo.department + '</span>'
+        //     + '</div>'
+        //     + '<div class="margin_b14">'
+        //     + '<span>排队人数： ' + info.queueInfo.listNum + '</span>'
+        //     + '</div><div>'
+        //     + '<div class="DISIL profession_title">擅长： </div><div class="DISIL profession_info">' + info.workerInfo.descText
+        //     + '</div> </div> </div> </div> </div>'
+        //     + '<div class="TxtAnC FSW_B bg-waite seeingList">'
+        //     + '<div class="listInfo   seeing_title">'
+        //     + '正在就诊'
+        //     + '</div>'
+        //     + '<div class="seeing_name">'
+        //     + seeingList
+        //     + '</div> </div>'
+        //     + '<div class="TxtAnC FSW_B bg-waite waitList">'
+        //     + '<div class="listInfo  waiting_title ">等待就诊</div>'
+        //     + waitingList
+        //     +' </div> </div>'
+        // contentList.html(html)
     }
 
 
@@ -162,6 +190,7 @@ $(document).ready(function () {
                 + info.queueInfo.department
                 + '</div> </div> </div>';
             modal.html(html);
+
         }
     }
 })

@@ -103,7 +103,7 @@ html, body {
     line-height: 1.12rem;
 }
 .modal_pos{
-    font-size: 2.2rem;
+    font-size: 1.5rem;
     margin-top: .75rem;
     height: 2.1rem;
     line-height: 2.1rem;
@@ -143,7 +143,7 @@ html, body {
 }
 .docImg img{
     width: 2.5rem;
-    border-radius: 50%;
+    /*border-radius: 50%;*/
     /*border: .1rem solid green;*/
 }
 .docDetail{
@@ -179,6 +179,10 @@ html, body {
     line-height: 2.3rem;
     color: #4B4B4B;
     border-bottom: .1rem solid #ededed;
+}
+.waitList{
+    height: 6.1rem;
+    overflow: hidden;
 }
 .waiting_title{
     /*height:9rem;*/

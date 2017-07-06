@@ -57,31 +57,31 @@ html {
 	padding-top:1rem;
 }
 .worker-info .headpic {
-    flex:1 1 10rem;
-    border-radius: 50%;
-    width: 10rem;
+	flex:1 1 10rem;
+	border-radius: 50%;
+	width: 10rem;
 }
 .worker-info .name {
-    flex:1 1 2rem;
-    font-size: 2rem;
-    padding-top:.5rem;
+	flex:1 1 2rem;
+	font-size: 2rem;
+	padding-top:.5rem;
 
 }
 .worker-info .title {
-    flex:1 1 2rem;
-    font-size: 2rem;
+	flex:1 1 2rem;
+	font-size: 2rem;
 }
 .worker-info .department {
-    flex:1 1 3rem;
-    font-family: PingFangSC;
-    font-size: 3rem;
-    color: #2C9FF8;
-    letter-spacing: -0px;
+	flex:1 1 3rem;
+	font-family: PingFangSC;
+	font-size: 3rem;
+	color: #2C9FF8;
+	letter-spacing: -0px;
 }
 .worker-info .queuenum {
-    flex:1 1 3rem;
-    font-size: 2.8rem;
-    color: #4B4B4B;
+	flex:1 1 3rem;
+	font-size: 2.8rem;
+	color: #4B4B4B;
 }
 .seeing-info.content-info {
 	display: flex;
@@ -89,10 +89,13 @@ html {
 	align-items: center;
 }
 .seeing-info .info-inner {
-    font-family: PingFangSC-Medium;
-    font-size: 5rem;
-    color: #4B4B4B;
-    text-align: center;
+	font-family: PingFangSC-Medium;
+	font-size: 7rem;
+	color: #4B4B4B;
+	text-align: center;
+}
+.info-id{
+	font-size: 5rem;
 }
 .watingList-info.content-info {
 	display: flex;
@@ -101,7 +104,7 @@ html {
 }
 .watingList-info .wait {
 	flex: 0 0 33%;
-	border-bottom: 2px solid #fff; 
+	border-bottom: 2px solid #fff;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -116,16 +119,16 @@ html {
 }
 
 .seeing-info .id {
-    margin-top:30px;
+	margin-top:30px;
 }
 .content-inner .content-block:nth-child(1) {
-    background-color: #F4F4F4;
+	background-color: #F4F4F4;
 }
 .content-inner .content-block:nth-child(2) {
-    background-color: #ECF0F1;
+	background-color: #ECF0F1;
 }
 .content-inner .content-block:nth-child(3) {
-    background-color: #DDE1E3;
+	background-color: #DDE1E3;
 }
 .content-inner .content-title {
 	flex: 0 0 7rem;
@@ -164,8 +167,8 @@ html {
 }
 .modal-content {
 	display: flex;
-    height: 100vh;
-    flex-direction: column;
+	height: 100vh;
+	flex-direction: column;
 }
 .modal-body {
 	flex:1;
@@ -174,7 +177,7 @@ html {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-    font-family: PingFangSC;
+	font-family: PingFangSC;
 	color:#fff;
 }
 .modal-body .department {
@@ -200,12 +203,235 @@ html {
 	background-color: #fff;
 	font-size: 7rem;
 	font-family: PingFangSC-Semibold;
-    color: #2C9FF8;
+	color: #2C9FF8;
 }
 /* 自适应布局 */
 @media screen and (max-width: 1280px) {
 	html {
-        font-size: 12px;
+		font-size: 12px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+html {
+
+}
+
+
+
+
+.body-inner {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+.header {
+	flex:0 0 8rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: transparent;
+	box-shadow: 0 4px 6px 0 rgba(0,0,0,0.08);
+}
+
+
+
+.body-inner > .content {
+	flex:1;
+	padding:1.6rem  2rem  1.6rem;
+}
+.content-inner {
+	display: flex;
+	height: -moz-calc(100vh - 8rem - 5.5rem - 4rem );
+	/*chrome safari*/
+	height:-webkit-calc(100vh - 8rem - 5.5rem - 4rem);
+	/*Standard */
+	height: calc(100vh - 8rem - 5.5rem - 4rem);
+	overflow: hidden;
+}
+.content-inner .content-block {
+	flex:1;
+	border:1px solid #fff;
+	display: flex;
+	flex-direction: column;
+}
+.content-block .content-info {
+	display: flex;
+	justify-content: center;
+	height: -moz-calc(100vh - 8rem - 5.5rem - 4rem - 6rem );
+	/*chrome safari*/
+	height:-webkit-calc(100vh - 8rem - 5.5rem - 4rem - 6rem);
+	/*Standard */
+	height: calc(100vh - 8rem - 5.5rem - 4rem - 6rem);
+}
+.worker-info.content-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	padding-top:1rem;
+}
+.worker-info .headpic {
+	flex:1 1 10rem;
+	border-radius: 50%;
+	width: 10rem;
+}
+.worker-info .name {
+	flex:1 1 2rem;
+	font-size: 2rem;
+	padding-top:.5rem;
+
+}
+.worker-info .title {
+	flex:1 1 2rem;
+	font-size: 2rem;
+}
+.worker-info .department {
+	flex:1 1 3rem;
+	font-family: PingFangSC;
+	font-size: 3rem;
+	color: #2C9FF8;
+	letter-spacing: -0px;
+}
+.worker-info .queuenum {
+	flex:1 1 3rem;
+	font-size: 2.8rem;
+	color: #4B4B4B;
+}
+.seeing-info.content-info {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.seeing-info .info-inner {
+	font-family: PingFangSC-Medium;
+	font-size: 7rem;
+	color: #4B4B4B;
+	text-align: center;
+}
+.info-id{
+	font-size: 5rem;
+}
+.watingList-info.content-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+.watingList-info .wait {
+	flex: 0 0 33%;
+	border-bottom: 2px solid #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	font-family: PingFangSC-Medium;
+	font-size: 3.75rem;
+	color: #4B4B4B;
+}
+.watingList-info .wait .id{
+	display: inline-block;
+	margin-left: 20px;
+}
+
+.seeing-info .id {
+	margin-top:30px;
+}
+.content-inner .content-block:nth-child(1) {
+	background-color: #F4F4F4;
+}
+.content-inner .content-block:nth-child(2) {
+	background-color: #ECF0F1;
+}
+.content-inner .content-block:nth-child(3) {
+	background-color: #DDE1E3;
+}
+.content-inner .content-title {
+	flex: 0 0 7rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background-image: linear-gradient(-1deg, #27CAFD 0%, #1887F8 51%, #27CAFD 100%);
+	border-radius: 5px 0 0 0;
+	font-family: PingFangSC;
+	font-size: 4rem;
+	color: #FFFFFF;
+}
+.footer {
+	flex:0 0 5.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	color: #fff;
+	font-size: 48px;
+	font-family: PingFangSC-Medium;
+	background: transparent;
+	box-shadow: 0 -4px 6px 0 rgba(0,0,0,0.08);
+}
+
+/* ----------------------------弹窗-------------------------*/
+.modal {
+	position: absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom: 0;
+	background-color: rgba(0,0,0,.3);
+	display: none;
+}
+.modal-content {
+	display: flex;
+	height: 100vh;
+	flex-direction: column;
+}
+.modal-body {
+	flex:1;
+	background-image: linear-gradient(45deg, #1887F8 0%, #27CAFD 100%);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: PingFangSC;
+	color:#fff;
+}
+.modal-body .department {
+	font-size: 9rem;
+}
+.modal-body .department span{
+	display: inline-block;
+	margin:2rem;
+}
+.modal-body .seeing {
+	margin-top: 2rem;
+	font-size: 13rem;
+}
+.modal-body .seeing .id{
+	display: inline-block;
+	margin-right:4rem;
+}
+.modal-footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height:15rem;
+	background-color: #fff;
+	font-size: 7rem;
+	font-family: PingFangSC-Semibold;
+	color: #2C9FF8;
+}
+/* 自适应布局 */
+@media screen and (max-width: 1280px) {
+	html {
+		font-size: 12px;
 	}
 }
 
