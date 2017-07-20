@@ -39,15 +39,44 @@ $(document).ready(function(){
         return query_string;
     }();
 
+    var anonymous = false;
+    //匿名函数
+    function replaceChat(source,pos,newChar){
+        if(pos<0||pos>=source.length||source.length==0){
+            return source;
+        }
+        var iBeginPos= 0, iEndPos=source.length;
+        var sFrontPart=source.substr(iBeginPos,pos);
+        var sTailPart=source.substr(pos+1,source.length);
+        var sRet=sFrontPart+newChar+sTailPart;
+        return sRet;
+    }
+    // console.log(replaceChat("张三丰",1,"*"));
+    function nameAnonymous (name) {
+        if (anonymous) {
+            name = name.length>2?replaceChat(name,1,"*"):replaceChat(name,0,"*");
+        }
+        return name
+    }
+
+    //是否显示患者序号
+    var showNumber = true;
+
     // Note:url参数必须这样写      ?stationID=2&callerID0=8
     $.get('config.json').done(function(response){
+        console.log(response)
         var type  = typeof response;
         var serverUrl;
         if (type == 'string') {
             serverUrl = JSON.parse(response).serverUrl;
+            anonymous = JSON.parse(response).anonymous;
+            showNumber = JSON.parse(response).showNumber;
         } else {
             serverUrl = response.serverUrl;
+            anonymous = response.anonymous;
+            showNumber = response.showNumber;
         }
+        // alert(nameAnonymous("张三丰"))
         setInterval(function(){
             $.ajax({
                 url: serverUrl,
@@ -119,6 +148,7 @@ $(document).ready(function(){
             default:
                 break
         }
+        if (!showNumber) num = null;
         if(num){
             returnStr = '(' + statusStr + num + ')'
         }else if ((!num)&&(statusStr != '')) {
@@ -132,20 +162,20 @@ $(document).ready(function(){
         headpic.attr({
             src: workerInfo.headpic
         });
-        name.text(workerInfo.name);
+        name.text(workerInfo.name+'('+workerInfo.title.slice(0,5)+')');
         title.text(workerInfo.title);
-        department.text(queueInfo.department);
+        department.text(queueInfo.pos+'('+queueInfo.department+')');
         queuenum.text(queueInfo.listNum);
         seeingName.text(queueInfo.listNum);
         queuenum.text(queueInfo.listNum);
 
 
-        seeingName.text(SliceName(listInfo.seeing.name));
+        seeingName.text(nameAnonymous(SliceName(listInfo.seeing.name)));
         seeingId.text(ReturnStatus(listInfo.seeing.status,listInfo.seeing.id));
 
         var html = '', len = listInfo.waiting.length > 3 ? 3 : listInfo.waiting.length;
         for (var i = 0; i < len; i++) {
-            html += '<div class="wait"><span class="name">' + SliceName(listInfo.waiting[i].name) + '</span><span class="id">' +
+            html += '<div class="wait"><span class="name">' + nameAnonymous(SliceName(listInfo.waiting[i].name)) + '</span><span class="id">' +
                 ReturnStatus(listInfo.waiting[i].status,listInfo.waiting[i].id) + '</span></div>'
         };
         if (len < 3) {

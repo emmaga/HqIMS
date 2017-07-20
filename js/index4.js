@@ -71,6 +71,7 @@ $(document).ready(function(){
             default:
                 break
         }
+        if (!showNumber) num = null;
         if(num){
             returnStr = '(' + statusStr + num + ')'
         }else if ((!num)&&(statusStr != '')) {
@@ -79,14 +80,41 @@ $(document).ready(function(){
         return returnStr;
     }
 
+    var anonymous = false;
+    //匿名函数
+    function replaceChat(source,pos,newChar){
+        if(pos<0||pos>=source.length||source.length==0){
+            return source;
+        }
+        var iBeginPos= 0, iEndPos=source.length;
+        var sFrontPart=source.substr(iBeginPos,pos);
+        var sTailPart=source.substr(pos+1,source.length);
+        var sRet=sFrontPart+newChar+sTailPart;
+        return sRet;
+    }
+    // console.log(replaceChat("张三丰",1,"*"));
+    function nameAnonymous (name) {
+        if (anonymous) {
+            name = name.length>2?replaceChat(name,1,"*"):replaceChat(name,0,"*");
+        }
+        return name
+    }
+
+    //是否显示患者序号
+    var showNumber = true;
+
     // Note:url参数必须这样写      ?stationID=2&callerID0=8
     $.get('config.json').done(function(response){
         var type  = typeof response;
         var serverUrl;
         if (type == 'string') {
             serverUrl = JSON.parse(response).serverUrl;
+            anonymous = JSON.parse(response).anonymous;
+            showNumber = JSON.parse(response).showNumber;
         } else {
             serverUrl = response.serverUrl;
+            anonymous = response.anonymous;
+            showNumber = response.showNumber;
         }
         setInterval(function(){
             $.ajax({
@@ -115,14 +143,14 @@ $(document).ready(function(){
 
     // 正在配药
     function changeWaiting(watingList) {
-        console.log(watingList)
+        // console.log(watingList)
         var html = "";
         for (var i = 0; i < waitingMax; i++) {
             if ((i + 1)%3 === 1) {
                 html += '<div class="row">';
             }
             if (watingList[i] ) {
-                html += '<div class="row-item">'+watingList[i].name+'</div>';
+                html += '<div class="row-item">'+nameAnonymous(SliceName(watingList[i].name))+'</div>';
             } else {
                 html += '<div class="row-item"></div>';
             }
@@ -131,19 +159,19 @@ $(document).ready(function(){
                 html += '</div>';
             }
         }
-        console.log(html)
+        // console.log(html)
         waitingList.html(html)
     }
     // 正在取药
     function changeSeeing(seeingList, calling) {
-        console.log(calling)
+        // console.log(calling)
         var html = "";
         for (var i = 0; i < hasSeenMax; i++) {
             if ((i + 1)%3 === 1) {
                 html += '<div class="row">';
             }
             if (seeingList[i] ) {
-                html += '<div class="row-item">'+seeingList[i].name+'</div>';
+                html += '<div class="row-item">'+nameAnonymous(SliceName(seeingList[i].name))+'</div>';
             } else {
                 html += '<div class="row-item"></div>';
             }
@@ -154,7 +182,8 @@ $(document).ready(function(){
         }
         hasseenList.html(html);
 
-        seeingName.text(SliceName(calling.name)+'('+calling.id+')');
+        seeingName.text(nameAnonymous(SliceName(calling.name))+ReturnStatus("",calling.id));
+        // console.log(calling.pos)
         seeingPos.text(calling.pos);
     }
 })

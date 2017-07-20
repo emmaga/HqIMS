@@ -62,13 +62,13 @@
 	flex: 0 0 14%;
 }
 .content-inner .head .seeing {
-	flex: 0 0 28%;
+	flex: 0 0 20%;
 }
 .content-inner .head .waiting {
-	flex: 0 0 40%;
+	flex: 0 0 30%;
 }
 .content-inner .head .listnum {
-	flex: 0 0 20%;
+	flex: 0 0 18%;
 }
 .content-inner .department-list {
 	flex:1;
@@ -118,11 +118,11 @@
 	font-size: 3rem;
 }
 .content-inner .department-list .seeing {
-	flex: 0 0 28%;
+	flex: 0 0 20%;
 	font-size: 3rem;
 }
 .content-inner .department-list .waiting {
-	flex: 0 0 40%;
+	flex: 0 0 30%;
 	font-size: 3rem;
 }
 .content-inner .department-list .waiting span{
@@ -136,7 +136,7 @@
 	justify-content:center;
 }
 .content-inner .department-list .listnum {
-	flex: 0 0 20%;
+	flex: 0 0 18%;
 	font-size: 3rem;
 }
 .footer {

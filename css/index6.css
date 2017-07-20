@@ -1,0 +1,152 @@
+html {
+
+}
+
+.body-inner {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+.header {
+	flex:0 0 8rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: transparent;
+	box-shadow: 0 4px 6px 0 rgba(0,0,0,0.08);
+}
+
+.body-inner > .content {
+	display: flex;
+	flex:1;
+	padding:1.6rem  2rem  1.6rem;
+}
+.content-inner {
+	display: flex;
+	flex:1;
+	overflow: hidden;
+}
+.content-inner .content-block {
+	/*flex:1;*/
+	border:1px solid #fff;
+	display: flex;
+	flex-direction: column;
+}
+.video{
+	flex:3;
+}
+.calledInfo{
+	flex:2;
+}
+.DIS-f{
+	display: flex;
+}
+.dis-flex-y{
+	flex-direction: column;
+}
+.flex-1{
+	flex:1;
+}
+.flex-2{
+	flex:2;
+}
+.flex-3{
+	flex:3;
+}
+.txt-center{
+	justify-content: center;
+	align-items: center;
+}
+.txt-top{
+	justify-content: center;
+	align-items: flex-start;
+}
+.FS-1{
+	font-size: 4.5rem;
+}
+.FS-2{
+	font-size: 6.2rem;
+}
+.FS-3{
+	font-size: 10rem;
+
+}
+.color1{
+	color: #4B4B4B;
+}
+.patientName{
+	line-height: 12rem;
+	height:12rem;
+}
+.patientID{
+	line-height: 7rem;
+	height: 7rem;
+}
+.Txt-center{
+	text-align: center;
+}
+.content-inner .pos {
+	flex: 2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background-image: linear-gradient(-1deg, #27CAFD 0%, #1887F8 51%, #27CAFD 100%);
+	border-radius: 5px;
+	font-family: PingFangSC;
+	/*font-size: 2.5rem;*/
+	color: #FFFFFF;
+}
+.footer {
+	flex:0 0 5.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	color: #fff;
+	font-size: 48px;
+	font-family: PingFangSC-Medium;
+	background: transparent;
+	box-shadow: 0 -4px 6px 0 rgba(0,0,0,0.08);
+}
+
+.calledInfo .part:nth-child(1){
+	border-bottom: 1px solid #fff;
+}
+.calledInfo div{
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+}
+/*背景色*/
+.bgColor1{
+	background: #F4F4F4;
+}
+.bgColor2{
+	background: #ECF0F1;
+}
+.bgColor3{
+	background: #DDE1E3;
+}
+.border-1{
+	border:1px solid #ffffff;
+}
+.border-left-none{
+	border-left:none;
+}
+.border-right-none{
+	border-right:none;
+}
+.border-top-2{
+	border-top:2px solid #fff;
+}
+.border-left-2{
+	border-left: 2px solid #ffffff;
+}
+/* 自适应布局 */
+@media screen and (max-width: 1280px) {
+	html {
+		font-size: 12px;
+	}
+}
+

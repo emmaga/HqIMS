@@ -170,7 +170,7 @@ $(document).ready(function () {
                     html += '<div class="waiting-item"></div>'
                 }
             }
-            html += '</div></div>'
+            html += '</div>'+ '<div class="listnum info-item">'+ res.list[i].queueInfo.listNum +'</div>'+'</div>'
         }
         // 若少于五个
         if (len < 5) {
@@ -181,6 +181,7 @@ $(document).ready(function () {
                     '<div class="seeing info-item">' +
                     '</div>' +
                     '<div class="waiting info-item"></div>' +
+                    '<div class="listnum info-item"></div>' +
                     '</div>'
             }
         }

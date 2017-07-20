@@ -22,19 +22,20 @@ html {
 
 
 .body-inner > .content {
+	display: flex;
 	flex:1;
 	padding:1.6rem  2rem  1.6rem;
 }
 .content-inner {
 	display: flex;
+	flex: 1;
 	flex-direction: column;
-	height: -moz-calc(100vh - 8rem - 5.5rem - 3.2rem);
-	/*chrome safari*/
-	height:-webkit-calc(100vh - 8rem - 5.5rem - 3.2rem);
-	/*Standard */
-	height: calc(100vh - 8rem - 5.5rem - 3.2rem);
+	/*height: -moz-calc(100vh - 8rem - 5.5rem - 3.2rem);*/
+	/*!*chrome safari*!*/
+	/*height:-webkit-calc(100vh - 8rem - 5.5rem - 3.2rem);*/
+	/*!*Standard *!*/
+	/*height: calc(100vh - 8rem - 5.5rem - 3.2rem);*/
 	overflow: hidden;
-	display: flex;
 	flex-direction: column;
 }
 .content-inner .content-head {
@@ -44,7 +45,9 @@ html {
 	flex: 0 0 6.25rem;
 }
 .content-inner .content-list {
-	flex:1;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
 }
 
 .content-inner .content-head .head-item {
@@ -68,25 +71,29 @@ html {
 }
 .content-inner .content-list .list {
 	display: flex;
+	flex: 1;
 	overflow: hidden;
 	border-top: 4px solid #fff;
 }
 .content-inner .content-list .list .content-block {
+	display: flex;
 	flex: 0 0 33.33%;
+	flex-direction: column;
 	border-right: 4px solid #fff
 }
 
 .content-block .content-info {
 	display: flex;
 	justify-content: center;
-	height: -moz-calc((100vh - 8rem - 5.5rem - 3.2rem - 6.25rem)/2 - 4px);
-	/*chrome safari*/
-	height:-webkit-calc((100vh - 8rem - 5.5rem - 3.2rem - 6.25rem)/2 - 4px);
-	/*Standard */
-	height: calc((100vh - 8rem - 5.5rem - 3.2rem - 6.25rem)/2 - 4px);
+	/*height: -moz-calc((100vh - 8rem - 5.5rem - 3.2rem - 6.25rem)/2 - 4px);*/
+	/*!*chrome safari*!*/
+	/*height:-webkit-calc((100vh - 8rem - 5.5rem - 3.2rem - 6.25rem)/2 - 4px);*/
+	/*!*Standard *!*/
+	/*height: calc((100vh - 8rem - 5.5rem - 3.2rem - 6.25rem)/2 - 4px);*/
 }
 .worker-info.content-info {
 	display: flex;
+	flex:1;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
@@ -152,6 +159,7 @@ html {
 }
 .seeing-info.content-info {
 	display: flex;
+	flex: 1;
 	justify-content: center;
 	align-items: center;
 }
@@ -166,11 +174,13 @@ html {
 }
 .watingList-info.content-info {
 	display: flex;
-	flex-direction: column;
+	flex: 1;
+	/*flex-direction: column;*/
 	justify-content: flex-start;
 }
 .watingList-info .wait {
-	flex: 0 0 33%;
+	/*flex: 0 0 33%;*/
+	flex: 1;
 	border-bottom: 2px solid #fff;
 	display: flex;
 	justify-content: center;

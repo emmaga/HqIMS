@@ -1,13 +1,19 @@
 $(document).ready(function(){
     // 请求数据 更新数据-----------------------------------------------------------------
-    var contentList = $('.content .content-list')
-    //  弹出框
-    var modal = $('.modal')
-    var modalFooter = $('.modal-content .modal-footer');
-    var departmentFooter = $('.modal-body .department span');
-    var seeingIdFooter = $('.modal-body .seeing .id');
-    var seeingNameFooter = $('.modal-body .seeing .name');
+    //诊室名
+    var pos = $(".pos")
+    //科室名
+    var department = $(".department")
+    //医生
+    var docName = $(".docName")
 
+    //患者信息
+    var patientInfo = $(".patientInfo")
+
+    // //患者名字
+    // var patientName = $(".patientName")
+    // //患者号码
+    // var patientID = $(".patientID")
 
     var QueryString = function () {
         // This function is anonymous, is executed immediately and 
@@ -55,7 +61,7 @@ $(document).ready(function(){
     //是否显示患者序号
     var showNumber = true;
 
-    // Note:url参数必须这样写      ?stationID=2&callerID0=8&callerID1=10
+    // Note:url参数必须这样写      ?stationID=2&callerID0=8
     $.get('config.json').done(function(response){
         var type  = typeof response;
         var serverUrl;
@@ -74,15 +80,16 @@ $(document).ready(function(){
                 type: 'POST',
                 dataType: 'json',
                 data: JSON.stringify({
-                    action:"getCallerList",
-                    stationID: Number(QueryString.stationID),
-                    callerID: [Number(QueryString.callerID0),Number(QueryString.callerID1)]
+                    action:"getStationList",
+                    stationID: Number(QueryString.stationID)
+                    // ,
+                    // callerID: [Number(QueryString.callerID0)]
                 })
             })
                 .done(function(response) {
-                    info = response.detail.list
+                    // console.log(response)
+                    info = response.detail.list;
                     changeInfo(info)
-                    showModal(info)
                 })
                 .fail(function() {
                     console.log("error");
@@ -96,7 +103,7 @@ $(document).ready(function(){
 
     //格式化输出名字
     var SliceName = function (name) {
-        console.log(name)
+        // console.log(name)
         if(name.indexOf("（")>-1){
             var tempStr = name.slice(name.indexOf("（"),name.indexOf("）")+1)
             name = name.replace(tempStr,'')
@@ -109,7 +116,7 @@ $(document).ready(function(){
         if(name.length > 4) {
             newName = name.slice(0,4);
         }
-        console.log(newName)
+        // console.log(newName)
         return newName;
 
     }
@@ -136,88 +143,68 @@ $(document).ready(function(){
         }
         if (!showNumber) num = null;
         if(num){
-            returnStr = '(' + statusStr + num + ')'
+            if(statusStr != ''){
+                returnStr = statusStr + '&nbsp;&nbsp;&nbsp;' + num
+            }else{
+                returnStr = num
+            }
+
         }else if ((!num)&&(statusStr != '')) {
-            returnStr = '(' + statusStr + ')'
+            returnStr = statusStr
         }
         return returnStr;
     }
 
     // 改变信息
     function changeInfo(info) {
-        var html = "";
-        for (var i = 0; i < info.length; i++) {
-            html+="<div class='list'>"+
-                '<div class="worker content-block">' +
-                '<div class="worker-info content-info">'+
-                '<div class="top">'+
-                '<div class="img">'+
-                '<img src="'+ info[i].workerInfo.headpic +'" alt="" class="headpic">'+
-                '</div>'+
-                '<div class="top-info">'+
-                '<div class="department">'+info[i].workerInfo.department+'</div>'+
-                '<div class="pos">'+info[i].queueInfo.pos+'</div>'+
-                '<div class="queuenum">排队人数：<span>'+info[i].queueInfo.listNum+'</span></div>'+
-                '</div>'+
-                '</div>'+
-                '<div class="down">'+
-                '<div class="name">'+info[i].workerInfo.name+'</div>'+
-                '<div class="title">('+info[i].workerInfo.title+')</div>'+
-                '</div>'+
-                '</div>'+
-                '</div>'+
-                '<div class="seeing content-block">'+
-                '<div class="seeing-info content-info">'+
-                '<div class="info-inner">'+
-                '<div class="name">'+nameAnonymous(SliceName(info[i].listInfo.seeing.name))+'</div>'+
-                '<div class="id seeing-id">'+ReturnStatus(info[i].listInfo.seeing.status,info[i].listInfo.seeing.id)+'</div>'+
-                '</div>'+
-                '</div>'+
-                '</div>'+
-                '<div class="watingList content-block">';
-            var watingList = info[i].listInfo.waiting;
-            var len = watingList.length> 2?2:watingList.length;
-            for (var j = 0; j < len; j++) {
-                html += '<div class="watingList-info content-info">' + '<div class="wait">'+
-                    '<span class="name">'+nameAnonymous(SliceName(watingList[j].name))+'</span>'+
-                    '<span class="id">'+ReturnStatus(watingList[j].status,watingList[j].id) +'</span>' +
-                    '</div>' +'</div>'
-            };
-
-            // 不够二个
-            if (len < 2 ) {
-                for (var k = 0; k < (2 - len); k++) {
-                    html +=  '<div class="watingList-info content-info"><div class="wait">'+
-                        '<span class="name"></span>'+
-                        '<span class="id"></span>' +
-                        '</div></div>'
-                }
-            }
-            html+='</div>'+
-                '</div>';
-        }
-        contentList.html(html)
-    }
-
-
-
-    // 弹出框内容
-    function showModal(info) {
-        var list = info, flag = false;
-        for (var i = 0; i < list.length; i++) {
-            if (list[i].listInfo.seeing.show == 1) {
-                modalFooter.text(list[i].workerInfo.department);
-                departmentFooter.text(list[i].queueInfo.pos);
-                seeingIdFooter.text(list[i].listInfo.seeing.id);
-                seeingNameFooter.text(list[i].listInfo.seeing.name);
+        // var flag = info.listInfo.seeing.show;
+        // if (flag == 1) {
+        // console.log(1)
+        var flag = false;
+        var num = null;
+        for(var i = 0 ; i<info.length;i++){
+            if(info[i].listInfo.seeing.show == 1){
                 flag = true;
-                break;
+                num = i
+                break
             }
         }
-        if (flag) {
-            modal.css('display', 'block');
-        } else {
-            modal.css('display', 'none');
+        // console.log(num)
+        // console.log(flag)
+        if(flag){
+            info = info[num]
+            //诊室名
+            pos.html(info.queueInfo.pos)
+            //科室名
+            department.html(info.queueInfo.department)
+            //医生
+            docName.html(SliceName(info.workerInfo.name))
+
+            var tempHtml = "";
+            if(ReturnStatus(info.listInfo.seeing.status, info.listInfo.seeing.id) != ""){
+                tempHtml ='<div>'
+                    +'<div class=" FS-3 patientName Txt-center">'
+                    +nameAnonymous(SliceName(info.listInfo.seeing.name))
+                    +'</div>'
+                    +'<div class=" FS-2 patientID Txt-center">'
+                    +ReturnStatus(info.listInfo.seeing.status, info.listInfo.seeing.id)
+                    +'</div></div>'
+            }else{
+                tempHtml ='<div>'
+                    +'<div class=" FS-3 patientName Txt-center">'
+                    +nameAnonymous(SliceName(info.listInfo.seeing.name))
+                    +'</div>'
+                    +'</div>'
+            }
+
+
+            patientInfo.html(tempHtml)
+            // //患者名字
+            // patientName.html(nameAnonymous(SliceName(info.listInfo.seeing.name)))
+            // //患者号码
+            // patientID.html(ReturnStatus(info.listInfo.seeing.status, info.listInfo.seeing.id))
+            // // }
         }
     }
+
 })

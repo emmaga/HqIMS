@@ -1,3 +1,5 @@
 {
-	"serverUrl": "http://192.168.17.187/hqueue/main/publish"
+	"serverUrl": "http://192.168.17.187/hqueue/main/publish",
+	"anonymous": true,
+	"showNumber": true
 }

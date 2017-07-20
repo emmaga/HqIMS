@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>信息发布-单科室单医生-横屏</title>
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css?k=0">
 </head>
 <body>
 <div>
@@ -16,11 +16,15 @@
                 <div class="worker content-block">
                     <div class="content-title">科室/医生</div>
                     <div class="worker-info content-info">
-                        <img src="" alt="" class="headpic">
-                        <div class="name"></div>
-                        <div class="title"></div>
-                        <div class="department"></div>
-                        <div class="queuenum">排队人数：<span></span></div>
+                        <div style="flex: 1;border-bottom: 2rem solid transparent;">
+                            <img src="" alt="" class="headpic">
+                        </div>
+                        <div style="flex: 1;display:flex;flex-direction: column;">
+                            <div class="name txt-center" style="flex: 1"></div>
+                            <!--<div class="title txt-center" style="flex: 1"></div>-->
+                            <div class="department txt-center" style="flex: 1"></div>
+                            <div class="queuenum txt-center" style="flex: 1;">排队人数：<span></span></div>
+                        </div>
                     </div>
                 </div>
                 <div class="seeing content-block">
@@ -35,6 +39,10 @@
                 <div class="watingList content-block">
                     <div class="content-title">正在排队</div>
                     <div class="watingList-info content-info">
+                        <div class="wait">
+                            <span class="name"></span>
+                            <span class="id"></span>
+                        </div>
                         <div class="wait">
                             <span class="name"></span>
                             <span class="id"></span>
@@ -64,6 +72,6 @@
     </div>
 </div>
 <script type="text/javascript" src="js/jquery-2.0.0.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/index.js?k=0"></script>
 </body>
 </html>
